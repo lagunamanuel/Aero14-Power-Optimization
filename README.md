@@ -4,7 +4,7 @@ A low-level system utility to fix battery drain issues on the Gigabyte Aero 14 (
 
 ## 📝 Description
 
-This project addresses a common issue in modern laptops where specific PCIe and USB controllers prevent the CPU from entering deep sleep states (C-states) during suspension. By toggling these "rebel" devices in the ACPI wakeup table, we significantly reduce power consumption while the lid is closed.
+This project addresses a common issue in modern laptops where specific PCIe and USB controllers trigger spurious wake interrupts during suspension. Instead of remaining in a deep sleep state, the CPU is forced into a constant loop of waking up and going back to sleep, which severely drains the battery. By toggling these "rebel" devices in the ACPI wakeup table, we stop this cycle and significantly reduce power consumption while the lid is closed.
 
 The solution consists of a **Bash script** that handles the hardware logic and a **Systemd service** that ensures the configuration is applied automatically at system boot.
 
