@@ -1,0 +1,13 @@
+[Unit]
+Description=Manage ACPI Wakeup Events for Power Optimization
+After=multi-user.target
+# This service prevents PCIe/USB devices from waking up the CPU unnecessarily
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/silenciar-despertares.sh
+# Ensures the service stays active after running the script once
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
